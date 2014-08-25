@@ -66,7 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING ReadMe.txt ChangeLog
 %attr(755,root,root) %{_libdir}/libqtkeychain.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libqtkeychain.so.0
-%attr(755,root,root) %ghost %{_libdir}/libqtkeychain.so
 
 %files devel
 %defattr(644,root,root,755)
@@ -75,6 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/qtkeychain/keychain.h
 %{_includedir}/qtkeychain/qkeychain_export.h
 %dir %{_libdir}/cmake/QtKeychain
+%attr(755,root,root) %{_libdir}/libqtkeychain.so
 %{_libdir}/cmake/QtKeychain/QtKeychainLibraryDepends.cmake
 %{_libdir}/cmake/QtKeychain/QtKeychainLibraryDepends-pld.cmake
 %{_libdir}/cmake/QtKeychain/QtKeychainConfig.cmake
