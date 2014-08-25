@@ -4,10 +4,10 @@ Version:	0.3.0
 Release:	0.1
 License:	Modified BSD License
 Group:		Libraries
-URL:		https://github.com/frankosterfeld/qtkeychain
 # Repackaged from https://github.com/frankosterfeld/qtkeychain/archive/master.zip
 Source0:	%{name}-%{version}.tar.bz2
 # Source0-md5:	a9de9be0cae568c03b152009d24ff170
+URL:		https://github.com/frankosterfeld/qtkeychain
 BuildRequires:	QtCore-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	qt4-build
@@ -18,8 +18,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_qt4_datadir	%{_datadir}/qt4
 
 %description
-
-%in is a Qt API to store passwords and other secret data securely.
+QtKeychain a Qt API to store passwords and other secret data securely.
 How the data is stored depends on the platform:
 - Mac OS X: Passwords are stored in the OS X Keychain.
 - Linux/Unix: If running, GNOME Keyring is used, otherwise qtkeychain
@@ -28,7 +27,6 @@ How the data is stored depends on the platform:
   QtKeychain uses the Windows API function
 
 %package devel
-
 Summary:	Development files for QtKeychain
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
@@ -46,20 +44,19 @@ applications that use QKeychain.
 install -d build
 cd build
 %cmake \
-		../
-
+		..
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
-        DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
