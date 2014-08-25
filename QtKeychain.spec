@@ -11,6 +11,7 @@ Source0:	%{name}-%{version}.tar.bz2
 BuildRequires:	QtCore-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	qt4-build
+BuildRequires:	qt4-linguist
 BuildRequires:	qt4-qmake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
