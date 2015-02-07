@@ -5,13 +5,12 @@
 
 Summary:	Qt API to store passwords and other secret data securely
 Name:		QtKeychain
-Version:	0.3.0
+Version:	0.4.0
 Release:	1
 License:	Modified BSD License
 Group:		Libraries
-# Repackaged from https://github.com/frankosterfeld/qtkeychain/archive/master.zip
-Source0:	%{name}-%{version}.tar.bz2
-# Source0-md5:	a9de9be0cae568c03b152009d24ff170
+Source0:	https://github.com/frankosterfeld/qtkeychain/archive/v%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	e4e48d8742a9fd2664425d58be236424
 URL:		https://github.com/frankosterfeld/qtkeychain
 BuildRequires:	cmake
 BuildRequires:	gettext-tools
@@ -79,7 +78,7 @@ This package contains libraries and header files for developing
 applications that use QKeychain.
 
 %prep
-%setup -q
+%setup -q -n qtkeychain-%{version}
 
 %build
 %if %{with qt4}
