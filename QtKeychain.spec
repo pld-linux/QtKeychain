@@ -13,16 +13,18 @@ Source0:	https://github.com/frankosterfeld/qtkeychain/archive/v%{version}/%{name
 # Source0-md5:	e4e48d8742a9fd2664425d58be236424
 URL:		https://github.com/frankosterfeld/qtkeychain
 BuildRequires:	cmake
-BuildRequires:	gettext-tools
 BuildRequires:	libstdc++-devel
+BuildRequires:	rpmbuild(find_lang) >= 1.37
 %if %{with qt4}
 BuildRequires:	QtCore-devel
+BuildRequires:	QtDBus-devel
 BuildRequires:	qt4-build
 BuildRequires:	qt4-linguist
 BuildRequires:	qt4-qmake
 %endif
 %if %{with qt5}
 BuildRequires:	Qt5Core-devel
+BuildRequires:	Qt5DBus-devel
 BuildRequires:	qt5-build
 BuildRequires:	qt5-linguist
 BuildRequires:	qt5-qmake
