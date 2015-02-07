@@ -1,7 +1,9 @@
+# TODO
+# - qt5 version
 Summary:	Qt API to store passwords and other secret data securely
 Name:		QtKeychain
 Version:	0.3.0
-Release:	0.1
+Release:	1
 License:	Modified BSD License
 Group:		Libraries
 # Repackaged from https://github.com/frankosterfeld/qtkeychain/archive/master.zip
@@ -15,10 +17,9 @@ BuildRequires:	qt4-linguist
 BuildRequires:	qt4-qmake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_qt4_datadir	%{_datadir}/qt4
-
 %description
 QtKeychain a Qt API to store passwords and other secret data securely.
+
 How the data is stored depends on the platform:
 - Mac OS X: Passwords are stored in the OS X Keychain.
 - Linux/Unix: If running, GNOME Keyring is used, otherwise qtkeychain
@@ -44,7 +45,8 @@ applications that use QKeychain.
 install -d build
 cd build
 %cmake \
-		..
+	-DBUILD_WITH_QT4=ON \
+	..
 %{__make}
 
 %install
@@ -52,13 +54,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -C build install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%find_lang qtkeychain --with-qm
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f qtkeychain.lang
 %defattr(644,root,root,755)
 %doc COPYING ReadMe.txt ChangeLog
 %attr(755,root,root) %{_libdir}/libqtkeychain.so.*.*.*
@@ -66,7 +70,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-#%doc doc examples
 %dir %{_includedir}/qtkeychain
 %{_includedir}/qtkeychain/keychain.h
 %{_includedir}/qtkeychain/qkeychain_export.h
