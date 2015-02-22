@@ -6,7 +6,7 @@
 Summary:	Qt API to store passwords and other secret data securely
 Name:		QtKeychain
 Version:	0.4.0
-Release:	1
+Release:	2
 License:	Modified BSD License
 Group:		Libraries
 Source0:	https://github.com/frankosterfeld/qtkeychain/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -55,8 +55,6 @@ applications that use QKeychain.
 %package -n Qt5Keychain
 Summary:	Qt API to store passwords and other secret data securely
 Group:		Libraries
-Requires:	qt5-build
-Requires:	qt5-qmake
 
 %description -n Qt5Keychain
 QtKeychain a Qt API to store passwords and other secret data securely.
