@@ -45,8 +45,6 @@ How the data is stored depends on the platform:
 Summary:	Development files for QtKeychain
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	qt4-build
-Requires:	qt4-qmake
 
 %description devel
 This package contains libraries and header files for developing
@@ -70,8 +68,6 @@ How the data is stored depends on the platform:
 Summary:	Development files for QtKeychain
 Group:		Development/Libraries
 Requires:	Qt5Keychain = %{version}-%{release}
-Requires:	qt5-build
-Requires:	qt5-qmake
 
 %description -n Qt5Keychain-devel
 This package contains libraries and header files for developing
