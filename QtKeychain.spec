@@ -5,12 +5,13 @@
 
 Summary:	Qt API to store passwords and other secret data securely
 Name:		QtKeychain
-Version:	0.4.0
-Release:	2
+Version:	0.8.0
+Release:	1
 License:	Modified BSD License
 Group:		Libraries
 Source0:	https://github.com/frankosterfeld/qtkeychain/archive/v%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	e4e48d8742a9fd2664425d58be236424
+# Source0-md5:	d741e7e55ae48a130cb95264fbe732b7
+Patch0:		cmake.patch
 URL:		https://github.com/frankosterfeld/qtkeychain
 BuildRequires:	cmake
 BuildRequires:	libstdc++-devel
@@ -30,6 +31,8 @@ BuildRequires:	qt5-linguist
 BuildRequires:	qt5-qmake
 %endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+#define	skip_post_check_so	libqt5keychain.so.*
 
 %description
 QtKeychain a Qt API to store passwords and other secret data securely.
@@ -75,13 +78,14 @@ applications that use QKeychain.
 
 %prep
 %setup -q -n qtkeychain-%{version}
+%patch0 -p1
 
 %build
 %if %{with qt4}
 install -d build-qt4
 cd build-qt4
 %cmake \
-	-DBUILD_WITH_QT4=ON \
+	-DBUILD_WITH_QT4:BOOL=TRUE \
 	..
 %{__make}
 cd ..
@@ -91,7 +95,7 @@ cd ..
 install -d build-qt5
 cd build-qt5
 %cmake \
-	-DBUILD_WITH_QT4=OFF \
+	-DBUILD_WITH_QT4:BOOL=OFF \
 	..
 %{__make}
 %endif
@@ -123,7 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc COPYING ReadMe.txt ChangeLog
 %attr(755,root,root) %{_libdir}/libqtkeychain.so.*.*.*
-%ghost %{_libdir}/libqtkeychain.so.0
+%ghost %{_libdir}/libqtkeychain.so.1
 
 %files devel
 %defattr(644,root,root,755)
@@ -136,7 +140,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n Qt5Keychain
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libqt5keychain.so.*.*.*
-%ghost %{_libdir}/libqt5keychain.so.0
+%ghost %{_libdir}/libqt5keychain.so.1
 
 %files -n Qt5Keychain-devel
 %defattr(644,root,root,755)
