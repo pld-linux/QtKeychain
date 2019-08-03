@@ -1,0 +1,11 @@
+--- qtkeychain-0.9.1/keychain_unix.cpp.orig	2018-08-20 08:23:34.000000000 +0200
++++ qtkeychain-0.9.1/keychain_unix.cpp	2019-08-03 14:50:14.322137534 +0200
+@@ -91,7 +91,7 @@
+     // a wallet can be opened.
+ 
+     iface.setTimeout(500);
+-    QDBusMessage reply = iface.call(QStringLiteral("networkWallet"));
++    QDBusMessage reply = iface.call(QLatin1String("networkWallet"));
+     return reply.type() == QDBusMessage::ReplyMessage;
+ }
+ 
