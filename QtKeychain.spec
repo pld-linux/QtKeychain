@@ -1,6 +1,7 @@
 Summary:	Qt API to store passwords and other secret data securely
 Summary(pl.UTF-8):	API Qt do bezpiecznego przechowywania haseł i innych tajnych danych
 Name:		QtKeychain
+# keep 0.11.x here for qt4 support; for newer versions see Qt5Keychain.spec, Qt6Keychain.spec
 Version:	0.11.1
 Release:	1
 License:	Modified BSD License
